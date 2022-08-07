@@ -1,0 +1,17 @@
+.emptyTaskList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem 0;
+}
+
+.emptyTaskList svg {
+  color: var(--gray-400);
+
+  margin-bottom: 1rem;
+}
+
+.emptyTaskList :is(b, span) {
+  color: var(--gray-300);
+}
