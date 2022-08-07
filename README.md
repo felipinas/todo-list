@@ -5,6 +5,6 @@ Description in progress...
 # Features
 
 - [x] Add a new task
-- [ ] Check and uncheck some task as done
-- [ ] Remove a task from list
-- [ ] Show task completion progress
+- [x] Check and uncheck some task as done
+- [x] Remove a task from list
+- [x] Show task completion progress
