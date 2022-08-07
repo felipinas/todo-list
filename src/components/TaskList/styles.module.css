@@ -1,0 +1,88 @@
+.form {
+  display: flex;
+  gap: 0.5rem;
+
+  transform: translateY(-50%);
+}
+
+.form input {
+  flex: 1;
+  padding: 1rem;
+
+  background-color: var(--gray-500);
+  color: var(--gray-100);
+
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  outline: none;
+}
+
+.form input:focus {
+  border-color: var(--purple-dark);
+}
+
+.form button {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  padding: 0 1rem;
+
+  color: var(--gray-100);
+  font-weight: bold;
+
+  background-color: var(--blue-dark);
+
+  border: none;
+  border-radius: 8px;
+  
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.form button:hover {
+  background-color: var(--blue);
+}
+
+.taskList header {
+  display: flex;
+  justify-content: space-between;
+
+  margin: calc(4rem - 27px) 0 1.5rem 0;
+}
+
+.taskList header > div {
+  display: flex;
+  align-items: center;
+}
+
+.taskList header div:first-child b {
+  color: var(--blue);
+}
+
+.taskList header div:nth-child(2) b {
+  color: var(--purple);
+}
+
+.taskList header span {
+  margin-left: .5rem;
+  padding: .125rem .5rem;
+
+  font-weight: bold;
+  font-size: .75rem;
+
+  color: var(--gray-100);
+  background-color: var(--gray-400);
+
+  border-radius: 50px;
+}
+
+.taskList ul {
+  list-style: none;
+
+  color: white;
+}
+
+.taskList li ~ li {
+  margin-top: 2rem;
+}

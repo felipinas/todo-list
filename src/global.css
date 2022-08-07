@@ -24,6 +24,12 @@ body {
   background-color: var(--gray-600);
 }
 
+main {
+  width: 90vw;
+  max-width: 46rem;
+  margin: auto;
+}
+
 body, input, button {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
