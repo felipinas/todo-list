@@ -84,5 +84,5 @@
 }
 
 .taskList li ~ li {
-  margin-top: 2rem;
+  margin-top: .75rem;
 }

@@ -2,12 +2,15 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { PlusCircle } from 'phosphor-react';
 import { uid } from 'uid';
 
+import { TaskBox } from '../TaskBox';
+import { EmptyTaskList } from '../EmptyTaskList';
+
 import styles from './styles.module.css'
 
 interface Task {
   id: string;
   title: string;
-  isDone: Boolean;
+  isDone: boolean;
 }
 
 export function TaskList() {
@@ -28,9 +31,25 @@ export function TaskList() {
         isDone: false
       }
   
-      setTasks(state => [...state, newTask])
+      setTasks(state => [...state, newTask]);
+
+      setNewTaskText('');
     }
   }
+
+  function deleteTask(taskId: string) {
+    const tasksWithoutRemovedOne = tasks.filter(task => task.id !== taskId);
+
+    setTasks(tasksWithoutRemovedOne);
+  }
+
+  function changeTaskStatus(taskId: string) {
+    const tasksAfterUpdate = tasks.map(task => {
+      return task.id === taskId ? { ...task, isDone: !task.isDone } : task;
+    })
+
+    setTasks(tasksAfterUpdate);
+  };
 
   function getCreatedTasksAmount() {
     return tasks.length
@@ -39,6 +58,8 @@ export function TaskList() {
   function getDoneTasksAmount() {
     return tasks.filter(task => task.isDone).length;
   }
+
+  const isThereTask = tasks.length > 0;
 
   return (
     <>
@@ -73,9 +94,28 @@ export function TaskList() {
           </div>
         </header>
 
-        <ul>
-          {tasks.map(task => <li key={task.id}>{task.title}</li>)}
-        </ul>
+        {
+          isThereTask ?
+          <ul>
+            {
+              tasks.map(({id, title, isDone}) => {
+                return (
+                  <li key={id}>
+                    <TaskBox
+                      id={id}
+                      title={title}
+                      isDone={isDone}
+                      onChangeTaskStatus={changeTaskStatus}
+                      onDeleteTask={deleteTask}
+                    />
+                  </li>
+                )
+              })
+            }
+          </ul>
+          :
+          <EmptyTaskList />
+        }
       </section>
     </>
   )
